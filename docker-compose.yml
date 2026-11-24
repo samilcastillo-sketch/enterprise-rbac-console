@@ -1,0 +1,6 @@
+services:
+  rbac-console:
+    build: .
+    ports:
+      - "8087:80"
+    restart: unless-stopped

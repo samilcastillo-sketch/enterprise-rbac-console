@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SentinelIAM — Enterprise RBAC &amp; Access Governance Console</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>SentinelIAM Governance</h1>
+      <span class="badge">Zero-Trust RBAC + ABAC • SOX SoD</span>
+    </div>
+    <div class="actions">
+      <select id="roleSelect" aria-label="Active Role"></select>
+      <button id="publishBtn" class="btn-primary" disabled>Publish Draft (<span id="diffCount">0</span>)</button>
+      <button id="resetBtn">Discard Draft</button>
+      <button id="exportBtn">Export Policy JSON</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Role Permission Matrix</h2>
+        <label class="inline-check"><input id="mfaToggle" type="checkbox" /> Require MFA for Role</label>
+      </div>
+      <div class="table-wrap">
+        <table id="matrixTable"></table>
+      </div>
+    </section>
+
+    <aside class="sidebar">
+      <section class="panel">
+        <h2>SoD Compliance Conflicts (<span id="sodCount">0</span>)</h2>
+        <div id="sodList" class="list"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Effective Access Simulator</h2>
+        <div class="form-grid">
+          <label>User <select id="simUser"></select></label>
+          <label>Resource <select id="simResource"></select></label>
+          <label>Action <select id="simAction"></select></label>
+          <label>Source IP <input id="simIp" value="10.24.8.15" /></label>
+          <label>Env
+            <select id="simEnv">
+              <option value="prod">prod</option>
+              <option value="staging">staging</option>
+            </select>
+          </label>
+          <label class="inline-check"><input id="simMfa" type="checkbox" checked /> MFA Verified</label>
+          <button id="evalBtn" class="btn-primary">Evaluate Access</button>
+        </div>
+        <div id="evalResult" class="eval-box">Run simulation to inspect RBAC/ABAC decision.</div>
+      </section>
+
+      <section class="panel">
+        <h2>Blast-Radius Diff</h2>
+        <div id="diffList" class="list"></div>
+      </section>
+    </aside>
+  </main>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

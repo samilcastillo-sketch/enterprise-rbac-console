@@ -1,0 +1,14 @@
+{
+  "name": "enterprise-rbac-console",
+  "version": "1.0.0",
+  "description": "SentinelIAM - Enterprise RBAC Policy Matrix, Separation of Duties (SoD) Detector, ABAC Simulator & Blast-Radius Diff Console",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs"
+  },
+  "author": "Samil Castillo <samilcastillo77@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
